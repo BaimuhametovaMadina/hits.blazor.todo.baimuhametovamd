@@ -1,9 +1,12 @@
 using hits.blazor.todo.baimuhametovamd.Components;
 using hits.blazor.todo.baimuhametovamd.Components.Account;
 using hits.blazor.todo.baimuhametovamd.Data;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using hits.blazor.todo.baimuhametovamd.Data.Interfaces;
+using hits.blazor.todo.baimuhametovamd.Data.Services;
 
 namespace hits.blazor.todo.baimuhametovamd
 {
@@ -40,6 +43,7 @@ namespace hits.blazor.todo.baimuhametovamd
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+            builder.Services.AddScoped<IDataService, MSSQLDataService>();
 
             var app = builder.Build();
 
